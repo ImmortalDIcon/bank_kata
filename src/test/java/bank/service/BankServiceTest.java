@@ -3,6 +3,7 @@ package bank.service;
 import bank.dao.BankDao;
 import bank.dao.impl.BankDaoImpl;
 import bank.model.BankAccount;
+import bank.model.Operation;
 import bank.service.impl.BankServicesImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -60,5 +61,18 @@ public class BankServiceTest {
         assertEquals(wd2, true);
         assertEquals(wd3, false);
         assertEquals(bankAccounts.get(3).getBalance(),300);
+    }
+
+    @Test
+    public void CheckOperationTest() {
+
+        bankServicesTest.makeWithdrawal("FR44444444", null,-200);
+        bankServicesTest.makeDeposit("FR44444444", 2500);
+        bankServicesTest.makeWithdrawal("FR44444444", "Apartment rent",-900);
+        bankServicesTest.makeWithdrawal("FR88888888", "",-30);
+        bankServicesTest.makeWithdrawal("FR44444444", "Apero",-60);
+        List<Operation> operations = bankServicesTest.getBankStatement("FR44444444");
+        operations.forEach(o->System.out.println(o));
+        assertEquals(operations.size(),4);
     }
 }

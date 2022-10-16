@@ -9,6 +9,7 @@ import bank.model.OperationType;
 import bank.service.BankServices;
 
 import java.util.Date;
+import java.util.List;
 
 public class BankServicesImpl implements BankServices {
 
@@ -45,6 +46,11 @@ public class BankServicesImpl implements BankServices {
         return true;
     }
 
+    @Override
+    public List<Operation> getBankStatement(String iban) {
+        return bankDao.getBankAccount(iban).getOperations();
+    }
+
     /**
      * Check if can make a withdrawal from a bank account
      * @param account
@@ -52,7 +58,7 @@ public class BankServicesImpl implements BankServices {
      * @return true can makeWithdrawal or false if it's impossible
      */
     private boolean canMakeWithdrawal(BankAccount account, double amountToWithdrawal){
-        if(account.getBalance()+ account.getOverdraftLimit()<= amountToWithdrawal) return true;
+        if(account.getBalance()+ account.getOverdraftLimit()>= amountToWithdrawal) return true;
         return false;
     }
 }

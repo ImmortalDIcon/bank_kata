@@ -1,0 +1,4 @@
+qOperation{date=Sun Oct 16 18:00:11 CEST 2022, wording='Unknown withdrawal', operationType=DEBIT, amount=-200.0}
+gOperation{date=Sun Oct 16 18:00:11 CEST 2022, wording='Deposit', operationType=CREDIT, amount=2500.0}
+mOperation{date=Sun Oct 16 18:00:11 CEST 2022, wording='Apartment rent', operationType=DEBIT, amount=-900.0}
+cOperation{date=Sun Oct 16 18:00:11 CEST 2022, wording='Apero', operationType=DEBIT, amount=-60.0}

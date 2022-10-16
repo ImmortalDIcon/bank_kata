@@ -1,5 +1,9 @@
 package bank.service;
 
+import bank.model.Operation;
+
+import java.util.List;
+
 public interface BankServices {
 
     /**
@@ -18,4 +22,12 @@ public interface BankServices {
      * @return
      */
     public boolean makeWithdrawal(String iban, String wording, double amount);
+
+
+    /**
+     * Find an account by IBAN and get it's bank statement
+     * @param iban
+     * @return
+     */
+    public List<Operation> getBankStatement(String iban);
 }
